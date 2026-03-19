@@ -1,29 +1,26 @@
 module linalg_norms
-  use iso_fortran_env, only: real64
+  use precision, only: dp
   implicit none
   private
-
-  integer, parameter :: dp = real64
-
   public :: norm_l1, norm_l2, norm_linf, norm_frobenius
 
 contains
 
   pure real(dp) function norm_l1(v, n)
-    integer,   intent(in) :: n
-    real(dp),  intent(in) :: v(n)
+    integer,  intent(in) :: n
+    real(dp), intent(in) :: v(n)
     norm_l1 = sum(abs(v))
   end function norm_l1
 
   pure real(dp) function norm_l2(v, n)
-    integer,   intent(in) :: n
-    real(dp),  intent(in) :: v(n)
+    integer,  intent(in) :: n
+    real(dp), intent(in) :: v(n)
     norm_l2 = sqrt(sum(v**2.0_dp))
   end function norm_l2
 
   pure real(dp) function norm_linf(v, n)
-    integer,   intent(in) :: n
-    real(dp),  intent(in) :: v(n)
+    integer,  intent(in) :: n
+    real(dp), intent(in) :: v(n)
     norm_linf = maxval(abs(v))
   end function norm_linf
 
